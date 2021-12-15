@@ -1,6 +1,6 @@
 # VFNetwork
 
-![example workflow](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE>/badge.svg)
+[![Swift](https://github.com/vafreitas/VFNetwork/actions/workflows/swift.yml/badge.svg)](https://github.com/vafreitas/VFNetwork/actions/workflows/swift.yml)
 [![Version](https://img.shields.io/cocoapods/v/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
 [![License](https://img.shields.io/cocoapods/l/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
 [![Platform](https://img.shields.io/cocoapods/p/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
@@ -22,7 +22,7 @@ pod 'VFNetwork'
 
 ## Author
 
-tqi-valves, tqi_valves@uolinc.com
+Victor Freitas (iOS Developer).
 
 ## License
 
