@@ -16,6 +16,8 @@ jobs:
     
     - name: Setup Cocoapods
       uses: maxim-lobanov/setup-cocoapods@v1
+      with: 
+        podfile-path: Example/Podfile.lock
     
     - name: Xcode Build
       uses: devbotsxyz/xcode-build@v1.0.0
