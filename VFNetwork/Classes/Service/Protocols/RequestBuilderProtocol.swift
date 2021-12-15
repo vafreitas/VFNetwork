@@ -25,7 +25,7 @@ public enum RequestStates<E> {
 
 // MARK: Protocol
 
-protocol RequestBuilderProtocol: class {
+protocol RequestBuilderProtocol: AnyObject {
     associatedtype ApiBuilder: APIBuilder
     func request(_ route: ApiBuilder, completion: @escaping NetworkRouterCompletion)
 }

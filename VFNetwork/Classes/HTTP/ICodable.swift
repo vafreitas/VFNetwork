@@ -40,7 +40,7 @@ extension ICodable {
     
     func dictionary() -> [String: Any]? {
         if let jsonData = try? JSONEncoder().encode(self),
-            let dict = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+            let dict = ((try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]) as [String : Any]??) {
             return dict
         }
         return nil

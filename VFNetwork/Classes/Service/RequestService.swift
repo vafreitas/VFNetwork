@@ -52,10 +52,14 @@ open class RequestService<T: APIBuilder> {
             //observer.onCompleted()
         }
         
-        if route.cacheable {
-            if let cacheResponse = try? Cache<Element>().get() {
-                completion(.success(.cache(cacheResponse!)))
-            } else {}
+        do {
+            if route.cacheable {
+                if let cacheResponse = try Cache<Element>().get() {
+                    completion(.success(.cache(cacheResponse)))
+                } else {}
+            }
+        } catch {
+            debugPrint("Error in VFNetwork Cache.")
         }
     }
     
