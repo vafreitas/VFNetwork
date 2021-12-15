@@ -1,0 +1,22 @@
+{
+  "name": "VFNetwork",
+  "version": "0.1.0",
+  "summary": "A short description of VFNetwork.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/tqi-valves/VFNetwork",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "tqi-valves": "tqi_valves@uolinc.com"
+  },
+  "source": {
+    "git": "https://github.com/tqi-valves/VFNetwork.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "VFNetwork/Classes/**/*"
+}

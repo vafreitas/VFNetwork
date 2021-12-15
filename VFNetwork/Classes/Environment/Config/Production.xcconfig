@@ -1,0 +1,15 @@
+//
+//  inwave.xcconfig
+//  inwave
+//
+//  Created by Victor Alves De Freitas on 04/07/19.
+//  Copyright © 2019 brvlab. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+base_url         = api.chucknorris.io
+timeout_interval = 10.0
+protocol         = https
+environment      = production

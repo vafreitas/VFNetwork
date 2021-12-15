@@ -1,0 +1,6 @@
+framework module VFNetwork {
+  umbrella header "VFNetwork-umbrella.h"
+
+  export *
+  module * { export * }
+}
