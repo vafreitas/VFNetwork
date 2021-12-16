@@ -10,9 +10,24 @@
 ### VFNetwork is a protocol-oriented network layer that will help you assemble your requests in just a few steps.
 ### Simple, Fast and Easy :).
 
-## Example
+## How to use
 
-Basically, you need two files to assemble your requests.
+Basically, you need two files to assemble your requests and put Base_URL, Protocol and Environment in your info.plist.
+
+### Info.plist 
+
+![Yout Plist](Assets/Examples/info-plist.png)
+
+You have 3 types of Environments for you choose.
+
+```swift
+enum EnvironmentCase: String {
+    case production = "production"
+    case sandbox = "sandbox"
+    case mock = "mock"
+}
+```
+
 
 ### HomeAPI.swift
 
@@ -47,8 +62,8 @@ extension HomeAPI: APIBuilder {
     
     var headers: HTTPHeader {
         .custom([
-            .bearer("youtToken"),
-            .basic("youtBase64"),
+            .bearer("yourToken"),
+            .basic("yourBase64"),
             .header("custom", "header")
         ])
     }
