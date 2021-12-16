@@ -1,7 +1,7 @@
 PODS:
   - Nimble (9.2.1)
   - Quick (4.0.0)
-  - VFNetwork (0.0.2)
+  - VFNetwork (1.0.0)
 
 DEPENDENCIES:
   - Nimble
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  VFNetwork: 839c81ef35f1da38e3646976212ad3b070f87bd4
+  VFNetwork: 63f6675805fa77ba766ff2dafa7f28a28c4a76c1
 
 PODFILE CHECKSUM: d1788e501a9f4b7dcf9acd700cf08fe8d384cd30
 
