@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import VFNetwork
 
 class HomeViewModel {
     
@@ -30,7 +31,7 @@ class HomeViewModel {
                 print(joke)
                 break
             case let .failure(error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }

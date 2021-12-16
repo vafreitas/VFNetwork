@@ -32,7 +32,11 @@ extension HomeAPI: APIBuilder {
     }
     
     var headers: HTTPHeader {
-        .empty
+        .custom([
+            .bearer("asdasdasdajdhjakshdjaksdhsajkdas"),
+            .header("Test", "Valor"),
+            .header("Test 1", "Valor 1")
+        ])
     }
     
     var task: HTTPTask {

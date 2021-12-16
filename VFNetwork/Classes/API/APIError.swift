@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol APIErrorProtocol: LocalizedError {
+public protocol APIErrorProtocol: LocalizedError {
     var errorDescription: String? { get }
 }
 /**
  For some know errors
  */
-enum APIError: Error {
+public enum APIError: Error {
     case unauthorized(Error?)
     case forbidden(Error?)
     case badRequest(Error?)
@@ -24,7 +24,7 @@ enum APIError: Error {
 }
 
 extension APIError: APIErrorProtocol {
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .unauthorized(let error):
             return generateErrorBasedOn(preffix: "Unauthorized", error)

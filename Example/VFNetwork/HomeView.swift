@@ -31,8 +31,8 @@ class HomeView: UIView {
         addSubview(testButton)
         testButton.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint(item: testButton, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 40).isActive = true
         NSLayoutConstraint(item: testButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: testButton, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
         NSLayoutConstraint(item: testButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 40).isActive = true
         NSLayoutConstraint(item: testButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 200).isActive = true
     }

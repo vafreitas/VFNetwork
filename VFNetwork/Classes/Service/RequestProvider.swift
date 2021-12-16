@@ -80,6 +80,7 @@ public class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
                                  timeoutInterval: 10.0)
         
         request.httpMethod = route.httpMethod.rawValue
+        setHeaders(to: &request, from: route)
         
         do {
             switch route.task {
@@ -187,6 +188,12 @@ public class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
     fileprivate func addAdditionalHeaders(_ additionalHeaders: [String: String]?, request: inout URLRequest) {
         guard let headers = additionalHeaders else { return }
         for (key, value) in headers {
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+    }
+    
+    fileprivate func setHeaders(to request: inout URLRequest, from route: ApiBuilder) {
+        for (key, value) in route.headers.values {
             request.setValue(value, forHTTPHeaderField: key)
         }
     }

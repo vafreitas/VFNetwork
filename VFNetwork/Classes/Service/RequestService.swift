@@ -29,27 +29,27 @@ open class RequestService<T: APIBuilder> {
      
      */
     open func execute<Element>(_ route: T,
-                          responseType: Element.Type, completion: @escaping (Result<RequestStates<Element>, Error>) -> Void) where Element: Decodable & Cacheable {
+                               responseType: Element.Type, completion: @escaping (Result<RequestStates<Element>, Error>) -> Void) where Element: Decodable & Cacheable {
         provider.request(route) { [weak self] data, response, error in
             guard let self = self else { return }
-            guard let data = data else {
-                debugPrint("Response Body is nil")
-                return
-            }
             
             do {
                 try self.provider.verifyData(response, error)
+                
+                guard let data = data else {
+                    debugPrint("Response Body is nil")
+                    return
+                }
+                
                 let model = try JSONDecoder().decode(responseType, from: data)
                 if route.cacheable {
                     try _ = Cache<Element>().create(model)
                 }
                 
-                completion(.success(.load(model)))
+                completion(.success(.load(model)))   
             } catch let error {
                 completion(.failure(error))
             }
-            
-            //observer.onCompleted()
         }
         
         do {
@@ -73,29 +73,16 @@ open class RequestService<T: APIBuilder> {
      (_ response: URLResponse?, _ error: Error?)
      
      */
-//    func execute(_ route: T) -> Observable<URLResponse> {
-//        return Observable<URLResponse>.create { [weak self] observer in
-//            self?.provider.request(route) { (data, response, error) in
-//                guard let _ = data else {
-//                    debugPrint("Response Body is nil")
-//                    return
-//                }
-//
-//                do {
-//                    try self?.provider.verifyData(response, error)
-//                    if let response = response {
-//                        observer.onNext(response)
-//                    } else {
-//                        observer.onCompleted()
-//                    }
-//                } catch let error {
-//                    observer.onError(error)
-//                }
-//
-//                observer.onCompleted()
-//            }
-//
-//            return Disposables.create {}
-//        }
-//    }
+    func execute(_ route: T, completion: @escaping (Result<URLResponse?, Error>) -> Void) {
+        provider.request(route) { [weak self] (data, response, error) in
+            guard let self = self else { return }
+            
+            do {
+                try self.provider.verifyData(response, error)
+                completion(.success(response))
+            } catch let error {
+                completion(.failure(error))
+            }
+        }
+    }
 }
