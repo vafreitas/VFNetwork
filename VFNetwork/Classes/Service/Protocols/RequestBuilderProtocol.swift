@@ -13,7 +13,7 @@ import Foundation
 typealias CompletionHandlerPlain = (_ response: URLResponse?,
                                     _ error: Error?) -> Void
 
-typealias NetworkRouterCompletion = (_ data: Data?,
+public typealias NetworkRouterCompletion = (_ data: Data?,
                                      _ response: URLResponse?,
                                     _ error: Error?) -> Void
 
@@ -25,7 +25,7 @@ public enum RequestStates<E> {
 
 // MARK: Protocol
 
-protocol RequestBuilderProtocol: AnyObject {
+public protocol RequestBuilderProtocol: AnyObject {
     associatedtype ApiBuilder: APIBuilder
     func request(_ route: ApiBuilder, completion: @escaping NetworkRouterCompletion)
 }

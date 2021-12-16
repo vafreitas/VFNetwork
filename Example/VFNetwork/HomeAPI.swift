@@ -33,9 +33,7 @@ extension HomeAPI: APIBuilder {
     
     var headers: HTTPHeader {
         .custom([
-            .bearer("asdasdasdajdhjakshdjaksdhsajkdas"),
-            .header("Test", "Valor"),
-            .header("Test 1", "Valor 1")
+            .bearer("asdasdasd")
         ])
     }
     
@@ -47,6 +45,11 @@ extension HomeAPI: APIBuilder {
     }
     
     var cacheable: Bool {
-        true
+        switch self {
+        case .home:
+            return false
+        case .categories:
+            return false
+        }
     }
 }

@@ -13,6 +13,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		DD5DF34E276B71C200BF095D /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5DF34D276B71C200BF095D /* HomeViewModelTests.swift */; };
+		DD5DF352276B774B00BF095D /* jokesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = DD5DF351276B774B00BF095D /* jokesSuccess.json */; };
 		DD620C5E276A97E9008A145C /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C5D276A97E9008A145C /* HomeAPI.swift */; };
 		DD620C60276A987B008A145C /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C5F276A987B008A145C /* HomeService.swift */; };
 		DD620C64276A9B66008A145C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C63276A9B66008A145C /* HomeView.swift */; };
@@ -49,12 +51,14 @@
 		78E23C2B35012F7E9A81E00F /* Pods-VFNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFNetwork_Example.release.xcconfig"; path = "Target Support Files/Pods-VFNetwork_Example/Pods-VFNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
 		844B37DF14CEE5FE81ED3644 /* Pods-VFNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFNetwork_Tests.release.xcconfig"; path = "Target Support Files/Pods-VFNetwork_Tests/Pods-VFNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CCC1FDEBD65E2FE4F0873291 /* Pods_VFNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VFNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD5DF34D276B71C200BF095D /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		DD5DF351276B774B00BF095D /* jokesSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jokesSuccess.json; sourceTree = "<group>"; };
 		DD620C5D276A97E9008A145C /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		DD620C5F276A987B008A145C /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		DD620C63276A9B66008A145C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DD620C66276A9CA3008A145C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DD620C69276A9CB4008A145C /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
-		F06B0DDC5C155475D0089C49 /* VFNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VFNetwork.podspec; path = ../VFNetwork.podspec; sourceTree = "<group>"; };
+		F06B0DDC5C155475D0089C49 /* VFNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VFNetwork.podspec; path = ../VFNetwork.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				DD5DF34F276B771A00BF095D /* Home */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -154,6 +159,23 @@
 				844B37DF14CEE5FE81ED3644 /* Pods-VFNetwork_Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DD5DF34F276B771A00BF095D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DD5DF350276B772200BF095D /* Responses */,
+				DD5DF34D276B71C200BF095D /* HomeViewModelTests.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		DD5DF350276B772200BF095D /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				DD5DF351276B774B00BF095D /* jokesSuccess.json */,
+			);
+			name = Responses;
 			sourceTree = "<group>";
 		};
 		DD620C5B276A97DA008A145C /* Home */ = {
@@ -324,6 +346,7 @@
 			files = (
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				DD5DF352276B774B00BF095D /* jokesSuccess.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				DD5DF34E276B71C200BF095D /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +631,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C8EEE0D790659E7F282695E /* Pods-VFNetwork_Tests.debug.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -629,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 844B37DF14CEE5FE81ED3644 /* Pods-VFNetwork_Tests.release.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

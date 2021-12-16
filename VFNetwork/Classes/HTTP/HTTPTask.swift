@@ -17,7 +17,7 @@ public enum HTTPHeader {
 }
 
 extension HTTPHeader {    
-    var values: [String: String] {
+    internal var values: [String: String] {
         switch self {
         case let .bearer(token): return ["Bearer": token]
         case let .basic(base64): return ["Basic": base64]

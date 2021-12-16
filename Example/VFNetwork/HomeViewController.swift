@@ -40,7 +40,15 @@ class HomeViewController: UIViewController {
     }
     
     @objc func testApi() {
-        viewModel.getJokes()
+        viewModel.getJokes { result in
+            switch result {
+            case let .success(jokes):
+                break
+            case let .failure(error):
+                debugPrint(error)
+            }
+        }
+        
         viewModel.getCategories()
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RequestOrchestratorProtocol: AnyObject {
+public protocol RequestOrchestratorProtocol: AnyObject {
     func execute(request: URLRequest,
     in session: URLSession,
     completion: @escaping (Data?, URLResponse?, APIError?) -> Void)

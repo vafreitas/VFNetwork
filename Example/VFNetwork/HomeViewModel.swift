@@ -22,16 +22,15 @@ class HomeViewModel {
         self.model = model
     }
     
-    func getJokes() {
+    func getJokes(completion: @escaping (Result<HomeModel, Error>) -> Void) {
         service.getJokes { result in
             switch result {
             case let .success(.load(joke)):
-                break
+                completion(.success(joke))
             case let .success(.cache(joke)):
-                print(joke)
-                break
+                completion(.success(joke))
             case let .failure(error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

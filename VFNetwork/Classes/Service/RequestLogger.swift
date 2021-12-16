@@ -41,12 +41,17 @@ class RequestLogger<ApiBuilder: APIBuilder> {
         print(logOutput)
     }
     
-    static func log(_ response: URLResponse?, _ data: Data?, _ error: Error?) {
+    static func log(_ response: URLResponse?, _ request: URLRequest?, _ data: Data?, _ error: Error?) {
         print("\n - - - - - - - - - - RESPONSE - - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - -  END RESPONSE - - - - - - - - - - \n") }
         
-        if let httpResponse = response as? HTTPURLResponse {
+        if let httpResponse = response as? HTTPURLResponse, let request = request {
             let statusCode = "\(httpResponse.statusCode)"
+            let urlAsString = request.url?.absoluteString ?? ""
+            let urlComponents = NSURLComponents(string: urlAsString)
+            let method = request.httpMethod != nil ? "\(request.httpMethod ?? "")" : ""
+            let path = "\(urlComponents?.path ?? "")"
+            let query = "\(urlComponents?.query ?? "")"
             var responseBody: Any?
             
             if let data = data {
@@ -69,6 +74,7 @@ class RequestLogger<ApiBuilder: APIBuilder> {
 
             var logOutput = """
             \(statusCodeText) \n
+             🚀 \(method) \(path)?\(query) HTTP/1.1 \n
              🛡 HEADERS: \n
             """
             

@@ -13,11 +13,11 @@ enum TimeoutRequestType: TimeInterval {
     case long = 60.0
 }
 
-class RequestExecutor: NSObject {
+open class RequestExecutor: NSObject {
     
     // MARK: Properties
     
-    var orchestrator: RequestOrchestratorProtocol
+    public var orchestrator: RequestOrchestratorProtocol
     var timeoutRequestType: TimeoutRequestType = .normal
     
     // MARK: Session Configuration

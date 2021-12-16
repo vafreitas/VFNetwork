@@ -8,15 +8,15 @@
 
 import Foundation
 
-public class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
+open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
     
     // MARK: Properties
     
-    var executor: RequestExecutor
+    public var executor: RequestExecutor
     
     // MARK: Initializers
     
-    init() {
+    public init() {
         self.executor = RequestExecutor()
     }
     
@@ -38,7 +38,7 @@ public class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
         (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> ()
      
      */
-    internal func request(_ route: ApiBuilder, completion: @escaping NetworkRouterCompletion) {
+    public func request(_ route: ApiBuilder, completion: @escaping NetworkRouterCompletion) {
         do {
             let request = try self.buildRequest(from: route)
             
@@ -50,7 +50,7 @@ public class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
             executor.perform(request) { (data, response, error) in
                 // In a real case this condition would be for QA and DEV (Mock).
                 if Environment().configuration(.environment) == EnvironmentCase.sandbox.rawValue {
-                    RequestLogger<ApiBuilder>.log(response, data, nil)
+                    RequestLogger<ApiBuilder>.log(response, request, data, nil)
                 }
                 
                 completion(data, response, error)
@@ -58,7 +58,7 @@ public class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
         } catch {
             // In a real case this condition would be for QA and DEV (Mock).
             if Environment().configuration(.environment) == EnvironmentCase.sandbox.rawValue {
-                RequestLogger<ApiBuilder>.log(nil, nil, error)
+                RequestLogger<ApiBuilder>.log(nil, nil, nil, error)
             }
             completion(nil, nil, error)
         }
