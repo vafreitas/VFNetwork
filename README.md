@@ -127,7 +127,9 @@ end
 
 ## Author
 
-- Victor Freitas | iOS Developer
+<img src="https://avatars.githubusercontent.com/u/33930810?s=400&u=de2cb07d58b8c7948bac1654a66bd54e6999a2a1&v=4" style="border: none; border-radius:50%" width="100" height="100">
+
+Victor Freitas | iOS Developer
 
 ## License
 
