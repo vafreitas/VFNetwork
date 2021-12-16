@@ -33,7 +33,10 @@ extension HomeAPI: APIBuilder {
     
     var headers: HTTPHeader {
         .custom([
-            .bearer("asdasdasd")
+            .bearer("yourToken"),
+            .basic("yourBase64"),
+            .header("custom", "header")
+            
         ])
     }
     
