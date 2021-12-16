@@ -6,10 +6,11 @@
 [![License](https://img.shields.io/cocoapods/l/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
 [![Platform](https://img.shields.io/cocoapods/p/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
 
+Simple, Fast and Easy.
+
 ## Introduction
 
-### VFNetwork is a protocol-oriented network layer that will help you assemble your requests in just a few steps.
-### Simple, Fast and Easy :).
+VFNetwork is a protocol-oriented network layer that will help you assemble your requests in just a few steps.
 
 ## How to use
 
