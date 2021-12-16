@@ -127,7 +127,7 @@ end
 
 ## Author
 
-Victor Freitas | iOS Developer
+- Victor Freitas | iOS Developer
 
 ## License
 
