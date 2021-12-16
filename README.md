@@ -1,4 +1,5 @@
-# VFNetwork
+![GitHub Light](Assets/Project/lg-white.png#gh-light-mode-only)
+![GitHub Dark](Assets/Project/lg-black.png#gh-dark-mode-only)
 
 [![Build](https://github.com/vafreitas/VFNetwork/actions/workflows/swift.yml/badge.svg)](https://github.com/vafreitas/VFNetwork/actions/workflows/swift.yml)
 [![Version](https://img.shields.io/cocoapods/v/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
