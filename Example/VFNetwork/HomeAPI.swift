@@ -46,13 +46,4 @@ extension HomeAPI: APIBuilder {
             return .request
         }
     }
-    
-    var cacheable: Bool {
-        switch self {
-        case .home:
-            return false
-        case .categories:
-            return false
-        }
-    }
 }

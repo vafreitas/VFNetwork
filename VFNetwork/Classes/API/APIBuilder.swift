@@ -13,6 +13,6 @@ public protocol APIBuilder {
     var httpMethod: HTTPMethods { get }
     var headers: HTTPHeader { get }
     var task: HTTPTask { get }
-    var cacheable: Bool { get }
+//    var cacheable: Bool { get }
 }
 

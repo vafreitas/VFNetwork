@@ -17,7 +17,3 @@ class HomeService: RequestService<HomeAPI> {
         execute(.categories, responseType: HomeCategories.self, completion: completion)
     }
 }
-
-class MyErrors: Error {
-
-}

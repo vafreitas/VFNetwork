@@ -42,9 +42,9 @@ open class RequestService<T: APIBuilder> {
                 }
                 
                 let model = try JSONDecoder().decode(responseType, from: data)
-                if route.cacheable {
-                    try _ = Cache<Element>().create(model)
-                }
+//                if route.cacheable {
+//                    try _ = Cache<Element>().create(model)
+//                }
                 
                 completion(.success(.load(model)))   
             } catch let error {
@@ -52,15 +52,15 @@ open class RequestService<T: APIBuilder> {
             }
         }
         
-        do {
-            if route.cacheable {
-                if let cacheResponse = try Cache<Element>().get() {
-                    completion(.success(.cache(cacheResponse)))
-                } else {}
-            }
-        } catch {
-            debugPrint("Error in VFNetwork Cache.")
-        }
+//        do {
+//            if route.cacheable {
+//                if let cacheResponse = try Cache<Element>().get() {
+//                    completion(.success(.cache(cacheResponse)))
+//                } else {}
+//            }
+//        } catch {
+//            debugPrint("Error in VFNetwork Cache.")
+//        }
     }
     
     /**

@@ -22,13 +22,13 @@ class RequestLogger<ApiBuilder: APIBuilder> {
         let path = "\(urlComponents?.path ?? "")"
         let query = "\(urlComponents?.query ?? "")"
         let host = "\(urlComponents?.host ?? "")"
-        let cacheable = route.cacheable ? "✅" : "❌"
+//        let cacheable = route.cacheable ? "✅" : "❌"
+//        💾 CACHED: \(cacheable) \n
         
         var logOutput = """
          🌎 HOST: \(host)\n
          🎯 URL: \(urlAsString)\n
          🚀 \(method) \(path)?\(query) HTTP/1.1 \n
-         💾 CACHED: \(cacheable) \n
          🛡 HEADERS: \n
         """
         
