@@ -102,7 +102,7 @@ class HomeService: RequestService<HomeAPI> {
 
 ## Documentation
 
-All documentation can be found in the Documentation folder, including detailed installation instructions for CocoaPods and more.
+All documentation can be found in our [Wiki](https://github.com/vafreitas/VFNetwork/wiki), including detailed api instructions and more.
 
 ## Requirements
 
