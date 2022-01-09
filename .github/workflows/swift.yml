@@ -16,12 +16,11 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
       with:
-        ruby-version: 2.6
+        ruby-version: 3.0.0
         bundler-cache: true
       
     - name: Install dependencies
       run: | 
-       bundle lock  --add-platform x86_64-darwin-19
        bundle install
       
     - name: Install Pods
