@@ -27,6 +27,6 @@ jobs:
         podfile-path: Example/Podfile.lock 
      
     - name: Run Fastlane 
-    - run: bundle exec fastlane test
+      run: bundle exec fastlane test
       env:
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
