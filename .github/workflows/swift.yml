@@ -25,6 +25,7 @@ jobs:
       
     - name: Install Pods
       run: |
+        cd Example
         pod install
      
     - name: Run Fastlane 
