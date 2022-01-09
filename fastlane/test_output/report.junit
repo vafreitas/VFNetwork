@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites name='VFNetwork_Tests.xctest' tests='2' failures='0'>
   <testsuite name='VFNetwork_Tests.HomeViewModelTests' tests='2' failures='0'>
-    <testcase classname='VFNetwork_Tests.HomeViewModelTests' name='testJokesFailure' time='0.009'/>
+    <testcase classname='VFNetwork_Tests.HomeViewModelTests' name='testJokesFailure' time='0.012'/>
     <testcase classname='VFNetwork_Tests.HomeViewModelTests' name='testJokesSuccess' time='0.003'/>
   </testsuite>
 </testsuites>
