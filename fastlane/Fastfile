@@ -22,6 +22,7 @@ platform :ios do
 	  scan(
       workspace: "Example/VFNetwork.xcworkspace",
       scheme: "VFNetwork-Example",
+      configuration: "Debug",
       clean: true,
       xcargs: "CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO"
     )
