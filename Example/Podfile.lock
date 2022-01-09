@@ -1,27 +1,16 @@
 PODS:
-  - Nimble (9.2.1)
-  - Quick (4.0.0)
   - VFNetwork (1.2.1)
 
 DEPENDENCIES:
-  - Nimble
-  - Quick
   - VFNetwork (from `../`)
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Nimble
-    - Quick
 
 EXTERNAL SOURCES:
   VFNetwork:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
-  Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
   VFNetwork: c6a805069930d48f0f53c82d9bea5ef0e7e89f19
 
-PODFILE CHECKSUM: d1788e501a9f4b7dcf9acd700cf08fe8d384cd30
+PODFILE CHECKSUM: 007dafd4f5c98ffde1dc9ef9c94d563198c750ae
 
 COCOAPODS: 1.11.2

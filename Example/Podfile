@@ -1,15 +1,11 @@
 use_frameworks!
 
 platform :ios, '9.0'
-source 'https://github.com/CocoaPods/Specs.git'
 
 target 'VFNetwork_Example' do
   pod 'VFNetwork', :path => '../'
 
   target 'VFNetwork_Tests' do
     inherit! :search_paths
-
-    pod 'Quick'
-    pod 'Nimble'
   end
 end
