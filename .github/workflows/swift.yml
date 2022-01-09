@@ -20,7 +20,9 @@ jobs:
         bundler-cache: true
       
     - name: Install dependencies
-      run: bundle install
+      run: | 
+       bundle lock  --add-platform x86_64-darwin-19
+       bundle install
       
     - name: Install Pods
       run: |
