@@ -17,14 +17,14 @@ jobs:
       uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
       with:
         ruby-version: 3.0.0
+        bundler-cache: true
       
     - name: Install dependencies
       run: bundle install
       
-    - name: Setup Cocoapods
-      uses: maxim-lobanov/setup-cocoapods@v1
-      with: 
-        podfile-path: Example/Podfile.lock 
+    - name: Install Pods
+      run: |
+        pod install
      
     - name: Run Fastlane 
       run: bundle exec fastlane test
