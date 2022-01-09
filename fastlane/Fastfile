@@ -23,6 +23,7 @@ platform :ios do
       workspace: "Example/VFNetwork.xcworkspace",
       scheme: "VFNetwork-Example",
       configuration: "Debug",
+      device: "iPhone 13 Pro Max",
       clean: true,
       xcargs: "CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO"
     )
