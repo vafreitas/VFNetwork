@@ -13,6 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+       path: Pods
+       key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+       restore-keys: |
+         ${{ runner.os }}-pods-
+      
     - name: Set up Ruby
       uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
       with:
@@ -26,7 +33,7 @@ jobs:
     - name: Install Pods
       run: |
         cd Example
-        pod install
+        bundle exec pod install
      
     - name: Run Fastlane 
       run: bundle exec fastlane test
