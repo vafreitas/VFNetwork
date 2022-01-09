@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias Cacheable = CacheableObject & ICodable
+public typealias Cacheable = CacheableObject & VCodable
 
 /**
  Protocol for cacheable objects

@@ -14,9 +14,9 @@ Protocol  for Codable typealias
 - Note:
        This protocol is for implement some convertion methods and diferent initializers
 */
-public protocol ICodable: Codable {}
+public protocol VCodable: Codable {}
 
-extension ICodable {
+extension VCodable {
     init?(_ dictionary: [String: Any]) {
         do {
             let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])

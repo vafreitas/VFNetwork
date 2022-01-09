@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import VFNetwork
 @testable import VFNetwork_Example
 
 class HomeViewModelTests: XCTestCase {

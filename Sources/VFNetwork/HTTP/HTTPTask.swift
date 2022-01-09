@@ -38,7 +38,7 @@ extension HTTPHeader {
 
 public enum HTTPTask {
     case request
-    case requestEncoder(_ model: ICodable)
+    case requestEncoder(_ model: VCodable)
     case requestBody(parameters: Parameters?)
     case requestURLParameters(urlParameters: Parameters?)
     case requestParameters(bodyParameters: Parameters?, urlParameters: Parameters?)

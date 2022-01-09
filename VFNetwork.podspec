@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     s.framework = "XCTest"
 
     s.source           = { :git => 'https://github.com/vafreitas/VFNetwork.git', :tag => "#{s.version}" }
-    s.source_files = "VFNetwork/Classes/**/*.{swift,h,m}"
+    s.source_files = "Sources/VFNetwork/**/*.{swift,h,m}"
     
     s.requires_arc = true
     s.pod_target_xcconfig = {
