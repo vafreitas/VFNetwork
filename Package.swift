@@ -12,6 +12,8 @@ let package = Package(
     dependencies: [],
     targets: [
         .target(
-            name: "VFNetwork")
+            name: "VFNetwork",
+            dependencies: [],
+            path: "Sources")
     ]
 )
