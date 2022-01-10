@@ -25,9 +25,7 @@ class HomeViewModel {
     func getJokes(completion: @escaping (Result<HomeModel, Error>) -> Void) {
         service.getJokes { result in
             switch result {
-            case let .success(.load(joke)):
-                completion(.success(joke))
-            case let .success(.cache(joke)):
+            case let .success(joke):
                 completion(.success(joke))
             case let .failure(error):
                 completion(.failure(error))
@@ -38,10 +36,7 @@ class HomeViewModel {
     func getCategories() {
         service.getCategories { result in
             switch result {
-            case let .success(.load(categories)):
-                break
-            case let .success(.cache(categories)):
-                print(categories)
+            case let .success(categories):
                 break
             case let .failure(error):
                 print(error)

@@ -29,7 +29,7 @@ open class RequestService<T: APIBuilder> {
      
      */
     open func execute<Element>(_ route: T,
-                               responseType: Element.Type, completion: @escaping (Result<RequestStates<Element>, Error>) -> Void) where Element: VCodable {
+                               responseType: Element.Type, completion: @escaping (Result<Element, Error>) -> Void) where Element: VCodable {
         provider.request(route) { [weak self] data, response, error in
             guard let self = self else { return }
             
@@ -42,25 +42,12 @@ open class RequestService<T: APIBuilder> {
                 }
                 
                 let model = try JSONDecoder().decode(responseType, from: data)
-//                if route.cacheable {
-//                    try _ = Cache<Element>().create(model)
-//                }
                 
-                completion(.success(.load(model)))   
+                completion(.success(model))   
             } catch let error {
                 completion(.failure(error))
             }
         }
-        
-//        do {
-//            if route.cacheable {
-//                if let cacheResponse = try Cache<Element>().get() {
-//                    completion(.success(.cache(cacheResponse)))
-//                } else {}
-//            }
-//        } catch {
-//            debugPrint("Error in VFNetwork Cache.")
-//        }
     }
     
     /**

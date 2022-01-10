@@ -9,11 +9,11 @@
 import VFNetwork
 
 class HomeService: RequestService<HomeAPI> {
-    func getJokes(completion: @escaping (Result<RequestStates<HomeModel>, Error>) -> Void) {
+    func getJokes(completion: @escaping (Result<HomeModel, Error>) -> Void) {
         execute(.home, responseType: HomeModel.self, completion: completion)
     }
     
-    func getCategories(completion: @escaping (Result<RequestStates<HomeCategories>, Error>) -> Void) {
+    func getCategories(completion: @escaping (Result<HomeCategories, Error>) -> Void) {
         execute(.categories, responseType: HomeCategories.self, completion: completion)
     }
 }
