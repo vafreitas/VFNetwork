@@ -12,6 +12,8 @@
 		607FACD81AFB9204008FA782 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* HomeViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		AAE3BA9C8F568C51E7049913 /* Pods_VFNetwork_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD05CB42278BC58100D94044 /* Pods_VFNetwork_Example.framework */; };
+		DD05CB45278BC60300D94044 /* VFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD05CB44278BC60300D94044 /* VFNetwork.framework */; };
 		DD3D6F112788BEDC00059943 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6EEB2788BEDC00059943 /* Disk.swift */; };
 		DD3D6F122788BEDC00059943 /* CacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6EED2788BEDC00059943 /* CacheKey.swift */; };
 		DD3D6F132788BEDC00059943 /* Cacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6EEF2788BEDC00059943 /* Cacheable.swift */; };
@@ -76,6 +78,8 @@
 		78E23C2B35012F7E9A81E00F /* Pods-VFNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFNetwork_Example.release.xcconfig"; path = "Target Support Files/Pods-VFNetwork_Example/Pods-VFNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
 		844B37DF14CEE5FE81ED3644 /* Pods-VFNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFNetwork_Tests.release.xcconfig"; path = "Target Support Files/Pods-VFNetwork_Tests/Pods-VFNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CCC1FDEBD65E2FE4F0873291 /* Pods_VFNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VFNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD05CB42278BC58100D94044 /* Pods_VFNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VFNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD05CB44278BC60300D94044 /* VFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VFNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3D6EEB2788BEDC00059943 /* Disk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
 		DD3D6EED2788BEDC00059943 /* CacheKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheKey.swift; sourceTree = "<group>"; };
 		DD3D6EEF2788BEDC00059943 /* Cacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cacheable.swift; sourceTree = "<group>"; };
@@ -119,7 +123,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD05CB45278BC60300D94044 /* VFNetwork.framework in Frameworks */,
 				3B3E5D3B30BE381F31E0F984 /* Pods_VFNetwork_Example.framework in Frameworks */,
+				AAE3BA9C8F568C51E7049913 /* Pods_VFNetwork_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +450,8 @@
 		E2B25B1004D3272E78F9570D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD05CB44278BC60300D94044 /* VFNetwork.framework */,
+				DD05CB42278BC58100D94044 /* Pods_VFNetwork_Example.framework */,
 				CCC1FDEBD65E2FE4F0873291 /* Pods_VFNetwork_Example.framework */,
 				3A02B2E1503BE0CF365D7174 /* Pods_VFNetwork_Tests.framework */,
 			);

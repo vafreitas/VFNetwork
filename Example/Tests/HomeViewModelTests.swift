@@ -16,7 +16,7 @@ class HomeViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mock = JSONMockOrchestrator(self)
+        mock = JSONMockOrchestrator()
         let provider = RequestProvider<HomeAPI>()
         provider.executor.orchestrator = mock
         viewModel.service.provider = provider

@@ -1,5 +1,5 @@
 PODS:
-  - VFNetwork (1.3.6)
+  - VFNetwork (1.3.7)
 
 DEPENDENCIES:
   - VFNetwork (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  VFNetwork: 4d2dc4d44f2b46df8b531a6a3d0fca23ae2f6cbf
+  VFNetwork: fe53b0b982d2b39db2349b15027bafcd17f95e17
 
 PODFILE CHECKSUM: 1e7db2535fa8e4321c863cd14c39807177cc6580
 

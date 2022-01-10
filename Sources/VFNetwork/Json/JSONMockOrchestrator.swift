@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import XCTest
 
 open class JSONMockOrchestrator: RequestOrchestratorProtocol {
     
@@ -18,7 +17,7 @@ open class JSONMockOrchestrator: RequestOrchestratorProtocol {
     
     // MARK: Initializers
     
-    public init(_ testClass: XCTestCase) {
+    public init() {
         bundle = Bundle.main
         fileNamed = ""
     }
