@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'VFNetwork'
-    s.version          = '1.2.1'
+    s.version          = '1.3.0'
     s.summary          = 'The Swift Network Protocol Oriented Framework.'
     
     # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'Victor Freitas' => 'vitoralves59@gmail.com' }
     
-    s.ios.deployment_target = '9.0'
+    s.ios.deployment_target = '12.0'
     s.swift_version = "5.5"
     
     s.framework = "XCTest"
