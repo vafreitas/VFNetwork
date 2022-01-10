@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'VFNetwork'
-    s.version          = '1.3.2'
+    s.version          = '1.3.3'
     s.summary          = 'The Swift Network Protocol Oriented Framework.'
     
     # This description is used to generate tags and improve search results.
@@ -32,14 +32,4 @@ Pod::Spec.new do |s|
 
     s.source           = { :git => 'https://github.com/vafreitas/VFNetwork.git', :tag => "#{s.version}" }
     s.source_files = "Sources/VFNetwork/**/*.{swift,h,m}"
-    
-    s.requires_arc = true
-    s.pod_target_xcconfig = {
-        'APPLICATION_EXTENSION_API_ONLY' => 'YES',
-        'DEFINES_MODULE' => 'YES',
-        'ENABLE_BITCODE' => 'NO',
-        'ENABLE_TESTING_SEARCH_PATHS' => 'YES',
-        'OTHER_LDFLAGS' => '$(inherited) -Xlinker -no_application_extension',
-    }
-    
 end
