@@ -14,8 +14,8 @@ You don't need any kind of abstraction from the network layer, everything is rea
 
 # Menu
 <ul>
-  <li>📒 <a href="/How-to-use">How to use</a></li>
-  <li>📘 <a href="/API">API</a></li>
-  <li>📗 <a href="/Requests">Requests</a></li>
-  <li>📙 <a href="/Unit-Tests">Unit Tests</a></li>
+  <li>📒 <a href="/VFNetwork/How-to-use">How to use</a></li>
+  <li>📘 <a href="/VFNetwork/API">API</a></li>
+  <li>📗 <a href="/VFNetwork/Requests">Requests</a></li>
+  <li>📙 <a href="/VFNetwork/Unit-Tests">Unit Tests</a></li>
 </ul>
