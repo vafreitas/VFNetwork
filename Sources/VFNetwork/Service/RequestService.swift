@@ -29,7 +29,7 @@ open class RequestService<T: APIBuilder> {
      
      */
     open func execute<Element>(_ route: T,
-                               responseType: Element.Type, completion: @escaping (Result<RequestStates<Element>, Error>) -> Void) where Element: Decodable & Cacheable {
+                               responseType: Element.Type, completion: @escaping (Result<RequestStates<Element>, Error>) -> Void) where Element: VCodable {
         provider.request(route) { [weak self] data, response, error in
             guard let self = self else { return }
             

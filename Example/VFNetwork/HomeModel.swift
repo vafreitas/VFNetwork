@@ -9,22 +9,14 @@
 import Foundation
 import VFNetwork
 
-struct HomeModel: Cacheable {
-    static var cacheKey: String {
-        "joke"
-    }
-    
+struct HomeModel: VCodable {
     var icon_url: String = ""
     var id: String = ""
     var url: String = ""
     var value: String = ""
 }
 
-struct HomeCategories: Cacheable {
-    static var cacheKey: String {
-        "categories"
-    }
-    
+struct HomeCategories: VCodable {
     var categories: [String]
     
     init(from decoder: Decoder) throws {

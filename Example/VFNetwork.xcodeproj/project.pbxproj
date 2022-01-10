@@ -822,7 +822,7 @@
 				INFOPLIST_FILE = VFNetwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.4.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -842,7 +842,7 @@
 				INFOPLIST_FILE = VFNetwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.4.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
