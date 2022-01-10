@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'VFNetwork'
-    s.version          = '1.3.5'
+    s.version          = '1.3.6'
     s.summary          = 'The Swift Network Protocol Oriented Framework.'
     
     # This description is used to generate tags and improve search results.
