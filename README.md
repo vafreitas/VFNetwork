@@ -113,13 +113,11 @@ VFNetwork is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add to your Podfile:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
 
-target 'Core' do
-  # Comment the next line if you don't want to use dynamic frameworks
+target 'YourApp' do
   use_frameworks!
 
-  # Pods for Core
+  # Pods for YourApp
 
   pod 'VFNetwork'
 
