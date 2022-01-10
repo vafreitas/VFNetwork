@@ -88,11 +88,11 @@ And here you will execute your requests.
 import VFNetwork
 
 class HomeService: RequestService<HomeAPI> {
-    func getJoke(completion: @escaping (Result<RequestStates<JokeModel>, Error>) -> Void) {
+    func getJoke(completion: @escaping (Result<JokeModel, Error>) -> Void) {
         execute(.joke, responseType: JokeModel.self, completion: completion)
     }
     
-    func getCategories(completion: @escaping (Result<RequestStates<CategoryModel>, Error>) -> Void) {
+    func getCategories(completion: @escaping (Result<CategoryModel, Error>) -> Void) {
         execute(.categories, responseType: CategoryModel.self, completion: completion)
     }
 }
