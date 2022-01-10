@@ -12,9 +12,6 @@ let package = Package(
     dependencies: [],
     targets: [
         .target(
-            name: "VFNetwork"),
-        .testTarget(
-            name: "VFNetworkTests",
-            dependencies: ["VFNetwork"]),
+            name: "VFNetwork")
     ]
 )
