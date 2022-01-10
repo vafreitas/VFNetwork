@@ -3,7 +3,7 @@
 
 [![Build](https://github.com/vafreitas/VFNetwork/actions/workflows/swift.yml/badge.svg)](https://github.com/vafreitas/VFNetwork/actions/workflows/swift.yml)
 [![Version](https://img.shields.io/cocoapods/v/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
-[![SPM](https://img.shields.io/badge/SwiftPM-v1.3.7-orange)](https://www.swift.org/package-manager/)
+[![SPM](https://img.shields.io/badge/SwiftPM-compatible-brightgreen)](https://www.swift.org/package-manager/)
 [![License](https://img.shields.io/cocoapods/l/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
 [![Platform](https://img.shields.io/cocoapods/p/VFNetwork.svg?style=flat)](https://cocoapods.org/pods/VFNetwork)
 
