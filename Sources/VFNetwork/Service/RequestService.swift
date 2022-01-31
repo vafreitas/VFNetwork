@@ -18,12 +18,18 @@ open class RequestService<T: APIBuilder> {
     
     public init() {}
     
+    // MARK: Provider Methods
+    
+    public func apply(provider: RequestProvider<T>) {
+        self.provider = provider
+    }
+    
     /**
      Method for execute request.
      
      - Parameters:
-     - route: ApiBuilder
-     - responseType: Element.Type
+         - route: ApiBuilder
+         - responseType: Element.Type
      - Returns:
      Result<Element?, Error>, _ response: URLResponse?
      
@@ -37,7 +43,7 @@ open class RequestService<T: APIBuilder> {
                 try self.provider.verifyData(response, error)
                 
                 guard let data = data else {
-                    debugPrint("Response Body is nil")
+                    debugPrint("VFNetwork: Response Body is nil")
                     return
                 }
                 
@@ -54,8 +60,8 @@ open class RequestService<T: APIBuilder> {
      Method for execute a plain request without response body.
      
      - Parameters:
-     - route: ApiBuilder
-     - responseType: Element.Type
+         - route: ApiBuilder
+         - responseType: Element.Type
      - Returns:
      (_ response: URLResponse?, _ error: Error?)
      

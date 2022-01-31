@@ -24,10 +24,10 @@ open class RequestExecutor: NSObject {
     
     var sessionConfiguration: URLSessionConfiguration {
         let config = URLSessionConfiguration.default
-        config.urlCache = nil
+        config.urlCache = .shared
         config.urlCredentialStorage = nil
         config.httpCookieAcceptPolicy = .always
-        config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        config.requestCachePolicy = .reloadRevalidatingCacheData
         config.timeoutIntervalForRequest = timeoutRequestType.rawValue
         
         if #available(iOS 11.0, *) {
@@ -53,7 +53,7 @@ open class RequestExecutor: NSObject {
     Method for perform a  request with specific orchestrator.
     
     - Parameters:
-    - request: URLRequest
+        - request: URLRequest
      
     - Returns:
     ( _ data: Data?, _ response: URLResponse?, _ error: Error?)

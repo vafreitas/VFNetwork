@@ -14,6 +14,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		AAE3BA9C8F568C51E7049913 /* Pods_VFNetwork_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD05CB42278BC58100D94044 /* Pods_VFNetwork_Example.framework */; };
 		DD05CB45278BC60300D94044 /* VFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD05CB44278BC60300D94044 /* VFNetwork.framework */; };
+		DD37A6D327A8554400EE2F53 /* VLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD37A6D227A8554400EE2F53 /* VLogger.swift */; };
 		DD3D6F112788BEDC00059943 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6EEB2788BEDC00059943 /* Disk.swift */; };
 		DD3D6F122788BEDC00059943 /* CacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6EED2788BEDC00059943 /* CacheKey.swift */; };
 		DD3D6F132788BEDC00059943 /* Cacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6EEF2788BEDC00059943 /* Cacheable.swift */; };
@@ -42,12 +43,12 @@
 		DD3D6F2A2788BEDC00059943 /* RequestBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6F0E2788BEDC00059943 /* RequestBuilderProtocol.swift */; };
 		DD3D6F2B2788BEDC00059943 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = DD3D6F102788BEDC00059943 /* .gitkeep */; };
 		DD5DF34E276B71C200BF095D /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5DF34D276B71C200BF095D /* HomeViewModelTests.swift */; };
-		DD5DF352276B774B00BF095D /* jokesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = DD5DF351276B774B00BF095D /* jokesSuccess.json */; };
 		DD620C5E276A97E9008A145C /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C5D276A97E9008A145C /* HomeAPI.swift */; };
 		DD620C60276A987B008A145C /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C5F276A987B008A145C /* HomeService.swift */; };
 		DD620C64276A9B66008A145C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C63276A9B66008A145C /* HomeView.swift */; };
 		DD620C67276A9CA3008A145C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C66276A9CA3008A145C /* HomeViewModel.swift */; };
 		DD620C6A276A9CB4008A145C /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD620C69276A9CB4008A145C /* HomeModel.swift */; };
+		DDBCF79627A76D7000987717 /* jokesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = DD5DF351276B774B00BF095D /* jokesSuccess.json */; };
 		FAFAC85A25E12F009EE83833 /* Pods_VFNetwork_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A02B2E1503BE0CF365D7174 /* Pods_VFNetwork_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		CCC1FDEBD65E2FE4F0873291 /* Pods_VFNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VFNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD05CB42278BC58100D94044 /* Pods_VFNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VFNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD05CB44278BC60300D94044 /* VFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VFNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD37A6D227A8554400EE2F53 /* VLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLogger.swift; sourceTree = "<group>"; };
 		DD3D6EEB2788BEDC00059943 /* Disk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
 		DD3D6EED2788BEDC00059943 /* CacheKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheKey.swift; sourceTree = "<group>"; };
 		DD3D6EEF2788BEDC00059943 /* Cacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cacheable.swift; sourceTree = "<group>"; };
@@ -221,6 +223,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DD37A6D127A8554400EE2F53 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DD37A6D227A8554400EE2F53 /* VLogger.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		DD3D6EE82788BEDC00059943 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +243,7 @@
 		DD3D6EE92788BEDC00059943 /* VFNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				DD37A6D127A8554400EE2F53 /* Utils */,
 				DD3D6EEA2788BEDC00059943 /* Cache */,
 				DD3D6EF12788BEDC00059943 /* Encoding */,
 				DD3D6EF52788BEDC00059943 /* Json */,
@@ -551,7 +562,6 @@
 				DD3D6F1F2788BEDC00059943 /* Production.xcconfig in Resources */,
 				DD3D6F2B2788BEDC00059943 /* .gitkeep in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				DD5DF352276B774B00BF095D /* jokesSuccess.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDBCF79627A76D7000987717 /* jokesSuccess.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +650,7 @@
 				DD3D6F112788BEDC00059943 /* Disk.swift in Sources */,
 				DD3D6F1C2788BEDC00059943 /* URLPath.swift in Sources */,
 				607FACD81AFB9204008FA782 /* HomeViewController.swift in Sources */,
+				DD37A6D327A8554400EE2F53 /* VLogger.swift in Sources */,
 				DD3D6F162788BEDC00059943 /* URLParameterEncoding.swift in Sources */,
 				DD3D6F282788BEDC00059943 /* RequestProvider.swift in Sources */,
 				DD3D6F292788BEDC00059943 /* RequestOrchestratorProtocol.swift in Sources */,
@@ -822,7 +834,7 @@
 				INFOPLIST_FILE = VFNetwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -842,7 +854,7 @@
 				INFOPLIST_FILE = VFNetwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

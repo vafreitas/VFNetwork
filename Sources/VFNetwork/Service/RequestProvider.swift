@@ -13,11 +13,24 @@ open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
     // MARK: Properties
     
     public var executor: RequestExecutor
+    private var environment: Environment
+    private var envConfig: String
     
     // MARK: Initializers
     
     public init() {
         self.executor = RequestExecutor()
+        self.environment = Environment()
+        self.envConfig = environment.configuration(.environment)
+    }
+    
+    // MARK: Provider Methods
+    
+    public init(orchestrator: RequestOrchestratorProtocol) {
+        self.executor = RequestExecutor()
+        self.executor.orchestrator = orchestrator
+        self.environment = Environment()
+        self.envConfig = environment.configuration(.environment)
     }
     
     // MARK: Enums
@@ -39,27 +52,25 @@ open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
      
      */
     public func request(_ route: ApiBuilder, completion: @escaping NetworkRouterCompletion) {
+        let requestLogger = RequestLogger<ApiBuilder>()
         do {
             let request = try self.buildRequest(from: route)
-            
-            // In a real case this condition would be for QA and DEV (Mock).
-            if Environment().configuration(.environment) == EnvironmentCase.sandbox.rawValue {
-                RequestLogger<ApiBuilder>.log(request: request, route: route)
+            if envConfig == EnvironmentCase.sandbox.rawValue || envConfig == EnvironmentCase.mock.rawValue {
+                requestLogger.log(request: request, route: route)
             }
             
-            executor.perform(request) { (data, response, error) in
-                // In a real case this condition would be for QA and DEV (Mock).
-                if Environment().configuration(.environment) == EnvironmentCase.sandbox.rawValue {
-                    RequestLogger<ApiBuilder>.log(response, request, data, nil)
+            executor.perform(request) { [weak self] (data, response, error) in
+                if self?.envConfig == EnvironmentCase.sandbox.rawValue || self?.envConfig == EnvironmentCase.mock.rawValue {
+                    requestLogger.log(response, request, data, nil)
                 }
                 
                 completion(data, response, error)
             }
         } catch {
-            // In a real case this condition would be for QA and DEV (Mock).
-            if Environment().configuration(.environment) == EnvironmentCase.sandbox.rawValue {
-                RequestLogger<ApiBuilder>.log(nil, nil, nil, error)
+            if envConfig == EnvironmentCase.sandbox.rawValue || envConfig == EnvironmentCase.mock.rawValue {
+                requestLogger.log(nil, nil, nil, error)
             }
+            
             completion(nil, nil, error)
         }
     }

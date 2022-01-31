@@ -7,43 +7,47 @@
 //
 
 import Foundation
-
 /**
-  For log some things of request and response.
+ For log some things of request and response.
  */
 class RequestLogger<ApiBuilder: APIBuilder> {
-    static func log(request: URLRequest, route: ApiBuilder) {
-        print("\n - - - - - - - - - - REQUEST - - - - - - - - - - \n")
-        defer { print("\n - - - - - - - - - -  END REQUEST - - - - - - - - - - \n") }
-        
+    var logger = VLogger()
+    var lastUUID = ""
+    
+    func log(request: URLRequest, route: ApiBuilder) {
+        let uuid = UUID().uuidString
         let urlAsString = request.url?.absoluteString ?? ""
         let urlComponents = NSURLComponents(string: urlAsString)
         let method = request.httpMethod != nil ? "\(request.httpMethod ?? "")" : ""
         let path = "\(urlComponents?.path ?? "")"
         let query = "\(urlComponents?.query ?? "")"
         let host = "\(urlComponents?.host ?? "")"
-//        let cacheable = route.cacheable ? "✅" : "❌"
-//        💾 CACHED: \(cacheable) \n
+        let body = (NSString(data: request.httpBody ?? Data(), encoding: String.Encoding.utf8.rawValue) ?? "")
+        logger.clear()
         
-        var logOutput = """
-         🌎 HOST: \(host)\n
-         🎯 URL: \(urlAsString)\n
-         🚀 \(method) \(path)?\(query) HTTP/1.1 \n
-         🛡 HEADERS: \n
-        """
+        logger.log(
+            .inline(key: "[REQUEST-ID] -", value: uuid),
+            .breakLine,
+            .inline(icon: .host, key: "Host:", value: host),
+            .inline(icon: .url, key: "Url:", value: "[\(method)] \(urlAsString)"),
+            .inline(icon: .request, key: "Path:", value: "\(path)?\(query) HTTP"),
+            .multline(icon: .secure, title: "Headers:", values: request.allHTTPHeaderFields ?? [:]),
+            .breakLine,
+            .vIf(body != "", {[
+                .inline(icon: .body, key: "Body:", value: String(body))
+            ]}, vElse: {[
+                .inline(icon: .body, key: "Body: ", value: "Empty")
+            ]}),
+            .breakLine,
+            .inline(key: "[END REQUEST] -", value: uuid),
+            .breakLine
+        )
         
-        for (key, value) in request.allHTTPHeaderFields ?? [:] {
-            logOutput += "       \(key): \(value) \n"
-        }
-        if let body = request.httpBody {
-            logOutput += "\n  📨 BODY: \(NSString(data: body, encoding: String.Encoding.utf8.rawValue) ?? "")"
-        }
-        print(logOutput)
+        lastUUID = uuid
     }
     
-    static func log(_ response: URLResponse?, _ request: URLRequest?, _ data: Data?, _ error: Error?) {
-        print("\n - - - - - - - - - - RESPONSE - - - - - - - - - - \n")
-        defer { print("\n - - - - - - - - - -  END RESPONSE - - - - - - - - - - \n") }
+    func log(_ response: URLResponse?, _ request: URLRequest?, _ data: Data?, _ error: Error?) {
+        logger.clear()
         
         if let httpResponse = response as? HTTPURLResponse, let request = request {
             let statusCode = "\(httpResponse.statusCode)"
@@ -62,33 +66,29 @@ class RequestLogger<ApiBuilder: APIBuilder> {
                 }
             }
             
-            var statusCodeText = ""
-            switch httpResponse.statusCode {
-            case 200...299:
-                statusCodeText = " ✅ STATUS CODE: \(statusCode)"
-            case 400...500:
-                statusCodeText = " ❌ STATUS CODE: \(statusCode)"
-            default:
-                break
-            }
+            logger.log(
+                .inline(key: "[RESPONSE-ID] -", value: lastUUID),
+                .breakLine,
+                .inline(icon: httpResponse.statusCode < 299 ? .success : .failure, key: "Status Code: ", value: statusCode),
+                .inline(icon: .url, key: "Url:", value: "[\(method)] \(urlAsString)"),
+                .inline(icon: .request, key: "Path:", value: "\(path)?\(query) HTTP"),
+                .multline(icon: .secure, title: "Headers:", values: request.allHTTPHeaderFields ?? [:]),
+                .breakLine,
+                .inline(icon: .body, key: "Body:", value: "\(responseBody ?? "")"),
+                .breakLine,
+                .inline(key: "[END RESPONSE] -", value: lastUUID),
+                .breakLine
+            )
 
-            var logOutput = """
-            \(statusCodeText) \n
-             🚀 \(method) \(path)?\(query) HTTP/1.1 \n
-             🛡 HEADERS: \n
-            """
-            
-            for (key, value) in httpResponse.allHeaderFields {
-                logOutput += "       \(key): \(value) \n"
-            }
-            
-            logOutput += "  📨 BODY: \(responseBody ?? "")\n"
-            print(logOutput)
         } else {
-            let logOutput = """
-            ERROR: \(error?.localizedDescription ?? "")
-            """
-            print(logOutput)
+            logger.log(
+                .inline(key: "[RESPONSE-ID] -", value: lastUUID),
+                .breakLine,
+                .inline(icon: .failure, key: "Error:", value: error?.localizedDescription ?? ""),
+                .breakLine,
+                .inline(key: "[END RESPONSE] -", value: lastUUID),
+                .breakLine
+            )
         }
     }
 }

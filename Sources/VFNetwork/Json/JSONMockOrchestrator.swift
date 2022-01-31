@@ -17,8 +17,8 @@ open class JSONMockOrchestrator: RequestOrchestratorProtocol {
     
     // MARK: Initializers
     
-    public init() {
-        bundle = Bundle.main
+    public init(from class: AnyObject) {
+        bundle = Bundle.init(for: type(of: `class`))
         fileNamed = ""
     }
     
