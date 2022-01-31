@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/vafreitas/VFNetwork/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+# VFNetwork
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Welcome to our Page, here you will find everything you need to know about VFNetwork.
 
-### Markdown
+## What was it created for?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+VFNetwork was built with the need to have an ease of implementation and that can be suitable for all types of architecture including MVVM-C, ViPER, MVC among others. Just importing and configuring your requests.
 
-```markdown
-Syntax highlighted code block
+You don't need any kind of abstraction from the network layer, everything is ready to just be configured and enjoyed without complications :).
+ 
 
-# Header 1
-## Header 2
-### Header 3
+<h3>Enjoy It.</h3>
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/vafreitas/VFNetwork/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+# Menu
+<ul>
+  <li>📒 <a href="/VFNetwork/How-to-use">How to use</a></li>
+  <li>📘 <a href="/VFNetwork/API">API</a></li>
+  <li>📗 <a href="/VFNetwork/Requests">Requests</a></li>
+  <li>📙 <a href="/VFNetwork/Unit-Tests">Unit Tests</a></li>
+</ul>

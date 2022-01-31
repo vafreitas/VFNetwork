@@ -1,3 +1,7 @@
+
+🏠 <a href="/VFNetwork/">Home</a> -> 
+📗 <a href="/VFNetwork/Requests">Requests</a>
+
 # GET
 
 To configure a route with the get method just configure your httpMethod with **.get** and task with **.request**.
