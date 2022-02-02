@@ -103,7 +103,7 @@ class HomeService: RequestService<HomeAPI> {
 
 ## Documentation
 
-All documentation can be found in our [Wiki](https://github.com/vafreitas/VFNetwork/wiki), or in [VFNetwork](https://vafreitas.github.io/VFNetwork/) page including detailed api instructions and more.
+All documentation can be found in our [Site](https://vfnetwork.vercel.app) including detailed api instructions and more.
 
 ## Requirements
 
