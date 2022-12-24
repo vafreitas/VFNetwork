@@ -8,13 +8,13 @@
 import Foundation
 
 public enum ObservedType {
-    case unauthorized
+    case responseStatus
 }
 
 public protocol Observer: AnyObject {}
 
-public protocol NetworkObserver: Observer {
-    func didUnauthorized(action: Action)
+public protocol VFNetworkObserver: Observer {
+    func didResponseStatus(status: Status)
 }
 
 /// Wrapper class that will hold the weak value of subscribers else VCs are gonna be retained
@@ -74,16 +74,22 @@ public class VFSubject: SubjectProtocol {
 }
 
 extension VFSubject {
-    public func publish(_ action: Action) {
+    public func publish(_ status: Status) {
         observers
-            .filter { $0.types.contains(.unauthorized) }
+            .filter { $0.types.contains(.responseStatus) }
             .forEach { (observer) in
-                guard let observer = observer.value as? NetworkObserver else { return }
-                observer.didUnauthorized(action: action)
+                guard let observer = observer.value as? VFNetworkObserver else { return }
+                observer.didResponseStatus(status: status)
             }
     }
 }
 
-public enum Action {
-    case update
+public enum Status {
+    case unauthorized
+    case badRequest
+    case forbidden
+    case internalError
+    case notFound
+    case unknown
+    case success
 }

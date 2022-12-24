@@ -239,19 +239,25 @@ open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
         if let httpResponse = response as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 200...299:
+                VFSubject.shared.publish(.success)
                 break
             case 400:
+                VFSubject.shared.publish(.badRequest)
                 throw APIError.badRequest(error)
             case 401:
-                VFSubject.shared.publish(.update)
+                VFSubject.shared.publish(.unauthorized)
                 throw APIError.unauthorized(error)
             case 403:
+                VFSubject.shared.publish(.forbidden)
                 throw APIError.forbidden(error)
             case 404:
+                VFSubject.shared.publish(.notFound)
                 throw APIError.notFound(error)
             case 500:
+                VFSubject.shared.publish(.internalError)
                 throw APIError.internalError(error)
             default:
+                VFSubject.shared.publish(.unknown)
                 throw APIError.unknown(error)
             }
         }

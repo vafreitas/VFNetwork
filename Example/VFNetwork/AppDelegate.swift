@@ -16,18 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Fast way
         VFNetwork.shared.configure([
             .timeout(10.0),
             .cacheable(true)
         ])
         
+        // Custom Way
         VFNetwork.shared.session {
             let config = URLSessionConfiguration.default
             config.urlCache = .shared
             config.urlCredentialStorage = nil
             config.httpCookieAcceptPolicy = .always
             config.requestCachePolicy = .reloadRevalidatingCacheData
-            config.timeoutIntervalForRequest = .init(VFNetwork.shared.timeout)
+            config.timeoutIntervalForRequest = .init(10.0)
             
             if #available(iOS 11.0, *) {
                 config.waitsForConnectivity = false
@@ -36,7 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return config
         }
         
-        VFSubject.shared.subscribe(self, for: .unauthorized)
+        // Observables to hear states or status from your network layer
+        VFSubject.shared.subscribe(self, for: .responseStatus)
         
         window = UIWindow()
         window?.rootViewController = UINavigationController(rootViewController: HomeViewController(viewModel: .init()))
@@ -73,13 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: VFNetwork Observer
 
-extension AppDelegate: NetworkObserver {
-    func didUnauthorized(action: Action) {
-        switch action {
-        case .update:
+extension AppDelegate: VFNetworkObserver {
+    func didResponseStatus(status: Status) {
+        if status == .unauthorized {
             // update token
             print("Update Token")
-            break
         }
     }
 }
