@@ -22,13 +22,13 @@ public class VFNetwork {
     
     // MARK: URL Session
     
-    var session: URLSessionConfiguration = {
+    lazy var session: URLSessionConfiguration = {
         let config = URLSessionConfiguration.default
         config.urlCache = .shared
         config.urlCredentialStorage = nil
         config.httpCookieAcceptPolicy = .always
         config.requestCachePolicy = .reloadRevalidatingCacheData
-        config.timeoutIntervalForRequest = .init(VFNetwork.shared.timeout)
+        config.timeoutIntervalForRequest = .init(self.timeout)
         
         if #available(iOS 11.0, *) {
             config.waitsForConnectivity = false

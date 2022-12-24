@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Base_URL</key>
-	<string>bagion.api.nerdbank.io</string>
+	<string>api.chucknorris.io</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

@@ -19,7 +19,7 @@ extension HomeAPI: APIBuilder {
     var path: URLPath {
         switch self {
         case .home:
-            return .plain("bagion/balance")
+            return .plain("jokes/random")
         case .categories:
             return .plain("jokes/categories")
         case .pdf:
