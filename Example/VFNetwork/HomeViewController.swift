@@ -48,8 +48,44 @@ class HomeViewController: UIViewController {
                 debugPrint(error)
             }
         }
+        viewModel.getJokes { result in
+            switch result {
+            case let .success(jokes):
+                break
+            case let .failure(error):
+                debugPrint(error)
+            }
+        }
+        viewModel.getJokes { result in
+            switch result {
+            case let .success(jokes):
+                break
+            case let .failure(error):
+                debugPrint(error)
+            }
+        }
+        viewModel.getJokes { result in
+            switch result {
+            case let .success(jokes):
+                break
+            case let .failure(error):
+                debugPrint(error)
+            }
+        }
+        viewModel.getJokes { result in
+            switch result {
+            case let .success(jokes):
+                break
+            case let .failure(error):
+                debugPrint(error)
+            }
+        }
         
         viewModel.getCategories()
+        
+        viewModel.service.group.notify(queue: .main) {
+            print("Services Finished.")
+        }
     }
 }
 

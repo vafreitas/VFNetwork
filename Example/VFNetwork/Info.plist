@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Base_URL</key>
-	<string>api.chucknorris.io</string>
+	<string>bagion.api.nerdbank.io</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -38,5 +38,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 </dict>
 </plist>

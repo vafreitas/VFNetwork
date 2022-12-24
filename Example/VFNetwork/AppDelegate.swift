@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VFNetwork
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,12 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        VFNetwork.shared.configure([
+            .timeout(10.0),
+            .cacheable(true)
+        ])
+        
+        VFNetwork.shared.session {
+            let config = URLSessionConfiguration.default
+            config.urlCache = .shared
+            config.urlCredentialStorage = nil
+            config.httpCookieAcceptPolicy = .always
+            config.requestCachePolicy = .reloadRevalidatingCacheData
+            config.timeoutIntervalForRequest = .init(VFNetwork.shared.timeout)
+            
+            if #available(iOS 11.0, *) {
+                config.waitsForConnectivity = false
+            }
+            
+            return config
+        }
+        
+        VFSubject.shared.subscribe(self, for: .unauthorized)
         
         window = UIWindow()
         window?.rootViewController = UINavigationController(rootViewController: HomeViewController(viewModel: .init()))
         window?.makeKeyAndVisible()
-        
         return true
+    }
+    
+    @objc func listenUnauthorized() {
+        print("Refresh Token")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -44,7 +69,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
+// MARK: VFNetwork Observer
 
+extension AppDelegate: NetworkObserver {
+    func didUnauthorized(action: Action) {
+        switch action {
+        case .update:
+            // update token
+            print("Update Token")
+            break
+        }
+    }
 }
 

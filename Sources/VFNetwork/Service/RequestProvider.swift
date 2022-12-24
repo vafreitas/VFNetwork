@@ -75,6 +75,22 @@ open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
         }
     }
     
+//    public func download(_ route: ApiBuilder, completion: @escaping NetworkRouterCompletion) {
+//        let url = buildURL(from:route)
+//        let pdfData = try? Data.init(contentsOf: url)
+//        let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+//        let pdfNameFromUrl = "VFNetwork-test.pdf"
+//        let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+//        do {
+//            try pdfData?.write(to: actualPath, options: .atomic)
+//            print("pdf successfully saved on \(actualPath.absoluteString)")
+//            completion(pdfData, nil, nil)
+//        } catch {
+//            completion(nil, nil, error)
+//            print("Pdf could not be saved")
+//        }
+//    }
+    
     /**
         Method for creating a request before it is executed.
     
@@ -227,6 +243,7 @@ open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
             case 400:
                 throw APIError.badRequest(error)
             case 401:
+                VFSubject.shared.publish(.update)
                 throw APIError.unauthorized(error)
             case 403:
                 throw APIError.forbidden(error)

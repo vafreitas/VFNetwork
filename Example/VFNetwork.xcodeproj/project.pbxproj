@@ -13,6 +13,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		AAE3BA9C8F568C51E7049913 /* Pods_VFNetwork_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD05CB42278BC58100D94044 /* Pods_VFNetwork_Example.framework */; };
+		C3751499295694C70026D4DD /* VFNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3751498295694C70026D4DD /* VFNetwork.swift */; };
+		C375149B29569E6E0026D4DD /* VFSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375149A29569E6E0026D4DD /* VFSubject.swift */; };
 		DD05CB45278BC60300D94044 /* VFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD05CB44278BC60300D94044 /* VFNetwork.framework */; };
 		DD37A6D327A8554400EE2F53 /* VLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD37A6D227A8554400EE2F53 /* VLogger.swift */; };
 		DD3D6F112788BEDC00059943 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D6EEB2788BEDC00059943 /* Disk.swift */; };
@@ -78,6 +80,8 @@
 		65A68D4BA05843F5A967D10B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		78E23C2B35012F7E9A81E00F /* Pods-VFNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFNetwork_Example.release.xcconfig"; path = "Target Support Files/Pods-VFNetwork_Example/Pods-VFNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
 		844B37DF14CEE5FE81ED3644 /* Pods-VFNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VFNetwork_Tests.release.xcconfig"; path = "Target Support Files/Pods-VFNetwork_Tests/Pods-VFNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C3751498295694C70026D4DD /* VFNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFNetwork.swift; sourceTree = "<group>"; };
+		C375149A29569E6E0026D4DD /* VFSubject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VFSubject.swift; sourceTree = "<group>"; };
 		CCC1FDEBD65E2FE4F0873291 /* Pods_VFNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VFNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD05CB42278BC58100D94044 /* Pods_VFNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VFNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD05CB44278BC60300D94044 /* VFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VFNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C3751491295665BE0026D4DD /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				C375149A29569E6E0026D4DD /* VFSubject.swift */,
+			);
+			path = Subject;
+			sourceTree = "<group>";
+		};
 		DD37A6D127A8554400EE2F53 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +255,8 @@
 		DD3D6EE92788BEDC00059943 /* VFNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				C3751498295694C70026D4DD /* VFNetwork.swift */,
+				C3751491295665BE0026D4DD /* Subject */,
 				DD37A6D127A8554400EE2F53 /* Utils */,
 				DD3D6EEA2788BEDC00059943 /* Cache */,
 				DD3D6EF12788BEDC00059943 /* Encoding */,
@@ -663,6 +677,7 @@
 				DD3D6F132788BEDC00059943 /* Cacheable.swift in Sources */,
 				DD3D6F212788BEDC00059943 /* APIBuilder.swift in Sources */,
 				DD3D6F1D2788BEDC00059943 /* VCodable.swift in Sources */,
+				C3751499295694C70026D4DD /* VFNetwork.swift in Sources */,
 				DD3D6F1E2788BEDC00059943 /* Environment.swift in Sources */,
 				DD3D6F152788BEDC00059943 /* ParameterEncoding.swift in Sources */,
 				DD620C6A276A9CB4008A145C /* HomeModel.swift in Sources */,
@@ -673,6 +688,7 @@
 				DD3D6F1B2788BEDC00059943 /* HTTPMethod.swift in Sources */,
 				DD3D6F2A2788BEDC00059943 /* RequestBuilderProtocol.swift in Sources */,
 				DD3D6F172788BEDC00059943 /* JSONParameterEncoding.swift in Sources */,
+				C375149B29569E6E0026D4DD /* VFSubject.swift in Sources */,
 				DD3D6F202788BEDC00059943 /* APIBuilder+BaseURL.swift in Sources */,
 				DD3D6F242788BEDC00059943 /* RequestService.swift in Sources */,
 				DD3D6F182788BEDC00059943 /* JSONMockContentFile.swift in Sources */,
