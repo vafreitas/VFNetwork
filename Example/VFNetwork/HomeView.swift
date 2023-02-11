@@ -17,6 +17,46 @@ class HomeView: UIView {
         return button
     }()
     
+    let statusInfoView: UIView = {
+        let view = UIView()
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .top
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let labelStackView = UIStackView()
+        labelStackView.axis = .vertical
+        labelStackView.spacing = 4
+        
+        let infoTitleLabel = UILabel()
+        infoTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoTitleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        infoTitleLabel.text = "Status"
+        
+        let infoSubtitleLabel = UILabel()
+        infoSubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoSubtitleLabel.font = UIFont.systemFont(ofSize: 14)
+        infoSubtitleLabel.text = "Online"
+        
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor(white: 0.9, alpha: 1).cgColor
+        view.layer.cornerRadius = 4
+        
+        labelStackView.addArrangedSubview(infoTitleLabel)
+        labelStackView.addArrangedSubview(infoSubtitleLabel)
+        
+        stackView.addArrangedSubview(labelStackView)
+        stackView.addArrangedSubview(UIView())
+        view.addSubview(stackView)
+        
+        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
+        
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = .white
@@ -31,10 +71,12 @@ class HomeView: UIView {
         addSubview(testButton)
         testButton.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint(item: testButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: testButton, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: testButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 40).isActive = true
-        NSLayoutConstraint(item: testButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 200).isActive = true
+        testButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100).isActive = true
+        testButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        statusInfoView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let guide = self.safeAreaLayoutGuide
+//        statusInfoView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 20).isActive = true
+//        statusInfoView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16).isActive = true
     }
-    
 }

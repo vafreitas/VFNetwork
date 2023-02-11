@@ -7,13 +7,17 @@
 //
 
 import VFNetwork
+import Foundation
 
 class HomeService: RequestService<HomeAPI> {
-    func getJokes(completion: @escaping (Result<HomeModel, Error>) -> Void) {
-        execute(.home, responseType: HomeModel.self, completion: completion)
+    
+    let group = DispatchGroup()
+    
+    func getJokes(completion: @escaping (Result<HomeModel, Error>, _ group: DispatchGroup) -> Void) {
+        execute(.home, responseType: HomeModel.self, group: group, completion: completion)
     }
     
-    func getCategories(completion: @escaping (Result<HomeCategories, Error>) -> Void) {
-        execute(.categories, responseType: HomeCategories.self, completion: completion)
+    func getCategories(completion: @escaping (Result<HomeCategories, Error>, _ group: DispatchGroup) -> Void) {
+        execute(.categories, responseType: HomeCategories.self, group: group, completion: completion)
     }
 }

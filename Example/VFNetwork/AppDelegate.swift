@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VFNetwork
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +17,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Fast way
+        VFNetwork.shared.configure([
+            .timeout(10.0),
+            .cacheable(true)
+        ])
+        
+        // Custom Way
+        VFNetwork.shared.session {
+            let config = URLSessionConfiguration.default
+            config.urlCache = .shared
+            config.urlCredentialStorage = nil
+            config.httpCookieAcceptPolicy = .always
+            config.requestCachePolicy = .reloadRevalidatingCacheData
+            config.timeoutIntervalForRequest = .init(10.0)
+            
+            if #available(iOS 11.0, *) {
+                config.waitsForConnectivity = false
+            }
+            
+            return config
+        }
+        
+        // Observables to hear states or status from your network layer
+        VFSubject.shared.subscribe(self, for: .responseStatus)
+        
         window = UIWindow()
         window?.rootViewController = UINavigationController(rootViewController: HomeViewController(viewModel: .init()))
         window?.makeKeyAndVisible()
-        
         return true
+    }
+    
+    @objc func listenUnauthorized() {
+        print("Refresh Token")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -44,7 +73,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
+// MARK: VFNetwork Observer
 
+extension AppDelegate: VFNetworkObserver {
+    func didResponseStatus(status: Status) {
+        if status == .unauthorized {
+            // update token
+            print("Update Token")
+        }
+    }
 }
 

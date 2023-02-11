@@ -36,6 +36,44 @@ open class RequestService<T: APIBuilder> {
      */
     open func execute<Element>(_ route: T,
                                responseType: Element.Type, completion: @escaping (Result<Element, Error>) -> Void) where Element: VCodable {
+        request(route, responseType: responseType, completion: completion)
+    }
+    
+    /**
+     Method for execute request with DispatchGroup Integrated.
+     
+     - Parameters:
+         - route: ApiBuilder
+         - responseType: Element.Type
+         - group: DispatchGroup
+     - Returns:
+     Result<Element?, Error>,  _ group: DispatchGroup
+     
+     */
+    open func execute<Element>(_ route: T,
+                               responseType: Element.Type,
+                               group: DispatchGroup,
+                               completion: @escaping (Result<Element, Error>, _ group: DispatchGroup) -> Void) where Element: VCodable {
+        group.enter()
+        request(route, responseType: responseType) {
+            completion($0, group)
+        }
+    }
+    
+    /**
+     Method for execute request.
+     
+     - Parameters:
+         - route: ApiBuilder
+         - responseType: Element.Type
+         - group: DispatchGroup
+     - Returns:
+     Result<Element?, Error>
+     
+     */
+    private func request<Element>(_ route: T,
+                                  responseType: Element.Type,
+                                  completion: @escaping (Result<Element, Error>) -> Void) where Element: VCodable {
         provider.request(route) { [weak self] data, response, error in
             guard let self = self else { return }
             
@@ -49,7 +87,7 @@ open class RequestService<T: APIBuilder> {
                 
                 let model = try JSONDecoder().decode(responseType, from: data)
                 
-                completion(.success(model))   
+                completion(.success(model))
             } catch let error {
                 completion(.failure(error))
             }
@@ -78,4 +116,16 @@ open class RequestService<T: APIBuilder> {
             }
         }
     }
+    
+    // TODO: Future Release ...
+//    func download(_ route: T, completion: @escaping (Result<Data?, Error>) -> Void) {
+//        provider.download(route) { data, response, error in
+//            if let data {
+//                print(data)
+//                return
+//            }
+//            
+//            print(error)
+//        }
+//    }
 }

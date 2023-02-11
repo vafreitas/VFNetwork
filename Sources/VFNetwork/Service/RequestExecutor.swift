@@ -18,29 +18,8 @@ open class RequestExecutor: NSObject {
     // MARK: Properties
     
     public var orchestrator: RequestOrchestratorProtocol
-    var timeoutRequestType: TimeoutRequestType = .normal
-    
-    // MARK: Session Configuration
-    
-    var sessionConfiguration: URLSessionConfiguration {
-        let config = URLSessionConfiguration.default
-        config.urlCache = .shared
-        config.urlCredentialStorage = nil
-        config.httpCookieAcceptPolicy = .always
-        config.requestCachePolicy = .reloadRevalidatingCacheData
-        config.timeoutIntervalForRequest = timeoutRequestType.rawValue
+    private var network: VFNetwork = VFNetwork.shared
         
-        if #available(iOS 11.0, *) {
-            config.waitsForConnectivity = false
-        }
-        
-        return config
-    }
-    
-    // MARK: Delegate
-    
-    weak var urlSessionDelegate: URLSessionDelegate?
-    
     // MARK: Initializers
     
     override init() {
@@ -60,7 +39,7 @@ open class RequestExecutor: NSObject {
     
     */
     func perform(_ request: URLRequest, completion: @escaping NetworkRouterCompletion) {
-        let urlSession = URLSession(configuration: sessionConfiguration, delegate: urlSessionDelegate, delegateQueue: .main)
+        let urlSession = URLSession(configuration: network.session, delegate: network.sessionDelegate, delegateQueue: .main)
         orchestrator.execute(request: request, in: urlSession, completion: completion)
         urlSession.finishTasksAndInvalidate()
     }
