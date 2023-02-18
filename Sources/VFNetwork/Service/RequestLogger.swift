@@ -29,12 +29,12 @@ class RequestLogger<ApiBuilder: APIBuilder> {
             .inline(key: "[REQUEST-ID] -", value: uuid),
             .breakLine,
             .inline(icon: .host, key: "Host:", value: host),
-            .inline(icon: .url, key: "Url:", value: "[\(method)] \(urlAsString)"),
+            .inline(icon: .url, key: "Url:", value: "\(method) | \(urlAsString)"),
             .inline(icon: .request, key: "Path:", value: "\(path)?\(query) HTTP"),
             .multline(icon: .secure, title: "Headers:", values: request.allHTTPHeaderFields ?? [:]),
             .breakLine,
             .vIf(body != "", {[
-                .inline(icon: .body, key: "Body:", value: String(body))
+                .inline(icon: .body, key: "Body:", value: String(body).pretty())
             ]}, vElse: {[
                 .inline(icon: .body, key: "Body: ", value: "Empty")
             ]}),
@@ -56,11 +56,18 @@ class RequestLogger<ApiBuilder: APIBuilder> {
             let method = request.httpMethod != nil ? "\(request.httpMethod ?? "")" : ""
             let path = "\(urlComponents?.path ?? "")"
             let query = "\(urlComponents?.query ?? "")"
-            var responseBody: Any?
+            var responseBody: String?
             
             if let data = data {
                 do {
-                    responseBody = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    let json = try JSONSerialization.jsonObject(with: data)
+                    var options: JSONSerialization.WritingOptions = [.prettyPrinted]
+                    if #available(iOS 13.0, *) {
+                        options = [.prettyPrinted, .withoutEscapingSlashes]
+                    }
+                    
+                    let jsonData = try JSONSerialization.data(withJSONObject: json, options: options)
+                    responseBody = String(data: jsonData, encoding: String.Encoding.utf8)
                 } catch let error {
                     print(error)
                 }
@@ -70,11 +77,11 @@ class RequestLogger<ApiBuilder: APIBuilder> {
                 .inline(key: "[RESPONSE-ID] -", value: lastUUID),
                 .breakLine,
                 .inline(icon: httpResponse.statusCode < 299 ? .success : .failure, key: "Status Code: ", value: statusCode),
-                .inline(icon: .url, key: "Url:", value: "[\(method)] \(urlAsString)"),
+                .inline(icon: .url, key: "Url:", value: "\(method) | \(urlAsString)"),
                 .inline(icon: .request, key: "Path:", value: "\(path)?\(query) HTTP"),
                 .multline(icon: .secure, title: "Headers:", values: request.allHTTPHeaderFields ?? [:]),
                 .breakLine,
-                .inline(icon: .body, key: "Body:", value: "\(responseBody ?? "")"),
+                .inline(icon: .body, key: "Body:", value: "\n\n\(responseBody ?? "")"),
                 .breakLine,
                 .inline(key: "[END RESPONSE] -", value: lastUUID),
                 .breakLine
@@ -90,5 +97,20 @@ class RequestLogger<ApiBuilder: APIBuilder> {
                 .breakLine
             )
         }
+    }
+}
+
+extension String {
+    func pretty() -> String {
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let pretty = try encoder.encode(self.self)
+            return String(data: pretty, encoding: .utf8) ?? ""
+        } catch {
+            debugPrint(error)
+        }
+        
+        return ""
     }
 }
