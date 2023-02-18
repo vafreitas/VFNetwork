@@ -23,7 +23,8 @@ class HomeViewModel {
     }
     
     func getJokes(completion: @escaping (Result<HomeModel, Error>) -> Void) {
-        service.getJokes { result in
+        service.getJokes { result, group in
+            group.leave()
             switch result {
             case let .success(joke):
                 completion(.success(joke))
@@ -34,7 +35,8 @@ class HomeViewModel {
     }
     
     func getCategories() {
-        service.getCategories { result in
+        service.getCategories { result, group in
+            group.leave()
             switch result {
             case let .success(categories):
                 break

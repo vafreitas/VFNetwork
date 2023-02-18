@@ -75,6 +75,22 @@ open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
         }
     }
     
+//    public func download(_ route: ApiBuilder, completion: @escaping NetworkRouterCompletion) {
+//        let url = buildURL(from:route)
+//        let pdfData = try? Data.init(contentsOf: url)
+//        let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+//        let pdfNameFromUrl = "VFNetwork-test.pdf"
+//        let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+//        do {
+//            try pdfData?.write(to: actualPath, options: .atomic)
+//            print("pdf successfully saved on \(actualPath.absoluteString)")
+//            completion(pdfData, nil, nil)
+//        } catch {
+//            completion(nil, nil, error)
+//            print("Pdf could not be saved")
+//        }
+//    }
+    
     /**
         Method for creating a request before it is executed.
     
@@ -223,18 +239,25 @@ open class RequestProvider<ApiBuilder: APIBuilder>: RequestBuilderProtocol {
         if let httpResponse = response as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 200...299:
+                VFSubject.shared.publish(.success)
                 break
             case 400:
+                VFSubject.shared.publish(.badRequest)
                 throw APIError.badRequest(error)
             case 401:
+                VFSubject.shared.publish(.unauthorized)
                 throw APIError.unauthorized(error)
             case 403:
+                VFSubject.shared.publish(.forbidden)
                 throw APIError.forbidden(error)
             case 404:
+                VFSubject.shared.publish(.notFound)
                 throw APIError.notFound(error)
             case 500:
+                VFSubject.shared.publish(.internalError)
                 throw APIError.internalError(error)
             default:
+                VFSubject.shared.publish(.unknown)
                 throw APIError.unknown(error)
             }
         }

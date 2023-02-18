@@ -14,13 +14,15 @@ public enum HTTPHeader {
     case basic(String)
     case header(String, String)
     case custom([HTTPHeader])
+    case json
+    case formURL
 }
 
 extension HTTPHeader {    
     internal var values: [String: String] {
         switch self {
-        case let .bearer(token): return ["Bearer": token]
-        case let .basic(base64): return ["Basic": base64]
+        case let .bearer(token): return ["Authorization": "Bearer " + token]
+        case let .basic(base64): return ["Authorization": "Basic " + base64]
         case let .header(key, value): return [key: value]
         case .empty: return [:]
         case let .custom(httpHeaders):
@@ -32,6 +34,8 @@ extension HTTPHeader {
             }
             
             return values
+        case .json: return ["Content-Type": "application/json"]
+        case .formURL: return ["Content-Type": "application/x-www-form-urlencoded; charset=utf-8"]
         }
     }
 }

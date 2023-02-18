@@ -11,6 +11,7 @@ import VFNetwork
 enum HomeAPI {
     case home
     case categories
+    case pdf
 }
 
 extension HomeAPI: APIBuilder {
@@ -21,12 +22,14 @@ extension HomeAPI: APIBuilder {
             return .plain("jokes/random")
         case .categories:
             return .plain("jokes/categories")
+        case .pdf:
+            return .plain("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf")
         }
     }
     
     var httpMethod: HTTPMethods {
         switch self {
-        case .home, .categories:
+        case .home, .categories, .pdf:
             return .get
         }
     }
@@ -36,13 +39,12 @@ extension HomeAPI: APIBuilder {
             .bearer("yourToken"),
             .basic("yourBase64"),
             .header("custom", "header")
-            
         ])
     }
     
     var task: HTTPTask {
         switch self {
-        case .home, .categories:
+        case .home, .categories, .pdf:
             return .request
         }
     }

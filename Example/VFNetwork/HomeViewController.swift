@@ -50,6 +50,10 @@ class HomeViewController: UIViewController {
         }
         
         viewModel.getCategories()
+        
+        viewModel.service.group.notify(queue: .main) {
+            print("Services Finished.")
+        }
     }
 }
 
