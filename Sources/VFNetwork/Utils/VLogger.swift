@@ -88,7 +88,7 @@ class VLogger {
      - Returns:
            Void
      */
-    func add(icon: VLoggerIcon = .none, title: String, values: [String: String]) {
+    func add(icon: VLoggerIcon = .none, title: String, values: [AnyHashable: Any]) {
         if icon != .none {
             logText += "\n  \(icon.rawValue) \(title) \n"
         } else {
@@ -130,7 +130,7 @@ class VLogger {
 
 enum VLoggerFunctions {
     case inline(icon: VLoggerIcon = .none, key: String, value: String? = nil)
-    case multline(icon: VLoggerIcon = .none, title: String, values: [String: String])
+    case multline(icon: VLoggerIcon = .none, title: String, values: [AnyHashable: Any])
     case breakLine
     case breakLines(Int64)
     case vIf(Bool, (() -> [VLoggerFunctions]), `vElse`: (() -> [VLoggerFunctions])? = nil)
