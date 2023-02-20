@@ -61,6 +61,27 @@ open class RequestService<T: APIBuilder> {
     }
     
     /**
+     Method for execute request with DispatchSemaphore Integrated.
+     
+     - Parameters:
+         - route: ApiBuilder
+         - responseType: Element.Type
+         - semaphore: DispatchSemaphore
+     - Returns:
+     Result<Element?, Error>,  _ semaphore: DispatchSemaphore
+     
+     */
+    open func execute<Element>(_ route: T,
+                               responseType: Element.Type,
+                               semaphore: DispatchSemaphore,
+                               completion: @escaping (Result<Element, Error>, _ semaphore: DispatchSemaphore) -> Void) where Element: VCodable {
+        semaphore.wait()
+        request(route, responseType: responseType) {
+            completion($0, semaphore)
+        }
+    }
+    
+    /**
      Method for execute request.
      
      - Parameters:

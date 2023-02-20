@@ -35,10 +35,10 @@ class HomeViewModel {
     }
     
     func getCategories() {
-        service.getCategories { result, group in
-            group.leave()
+        service.getCategories { result, semaphore in
+            semaphore.signal()
             switch result {
-            case let .success(categories):
+            case .success:
                 break
             case let .failure(error):
                 print(error)
