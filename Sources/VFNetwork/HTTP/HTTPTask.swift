@@ -16,6 +16,8 @@ public enum HTTPHeader {
     case custom([HTTPHeader])
     case json
     case formURL
+    case multipart
+    case lenght(Int64)
 }
 
 extension HTTPHeader {    
@@ -36,6 +38,8 @@ extension HTTPHeader {
             return values
         case .json: return ["Content-Type": "application/json"]
         case .formURL: return ["Content-Type": "application/x-www-form-urlencoded; charset=utf-8"]
+        case .multipart: return ["Content-Type": "multipart/form-data; boundary=Boundary-\(UUID().uuidString)"]
+        case let .lenght(size): return ["Content-Length": String(size)]
         }
     }
 }
