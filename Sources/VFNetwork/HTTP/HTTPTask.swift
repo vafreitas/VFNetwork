@@ -17,7 +17,7 @@ public enum HTTPHeader {
     case json
     case formURL
     case multipart
-    case lenght(Int64)
+    case lenght(Int)
 }
 
 extension HTTPHeader {    
